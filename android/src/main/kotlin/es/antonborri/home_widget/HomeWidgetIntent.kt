@@ -29,7 +29,7 @@ object HomeWidgetLaunchIntent {
 object HomeWidgetBackgroundIntent {
     private const val HOME_WIDGET_BACKGROUND_ACTION = "es.antonborri.home_widget.action.BACKGROUND"
 
-    fun getBroadcast(context: Context, uri: Uri? = null): PendingIntent {
+    fun getBroadcast(context: Context, uri: Uri? = null, flags:PendingIntent): PendingIntent {
         val intent = Intent(context, HomeWidgetBackgroundReceiver::class.java)
         intent.data = uri
         intent.action = HOME_WIDGET_BACKGROUND_ACTION
@@ -40,7 +40,7 @@ object HomeWidgetBackgroundIntent {
         // }
         // API level 31 requires specifying either of
         // PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_MUTABLE
-        var flags = PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
+        // var flags = PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
 
         return PendingIntent.getBroadcast(context, 0, intent, flags)
     }
