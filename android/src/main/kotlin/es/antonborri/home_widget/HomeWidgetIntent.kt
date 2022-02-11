@@ -16,14 +16,10 @@ object HomeWidgetLaunchIntent {
         intent.data = uri
         intent.action = HOME_WIDGET_LAUNCH_ACTION
 
-        // var flags = PendingIntent.FLAG_UPDATE_CURRENT
-        // if (Build.VERSION.SDK_INT >= 23) {
-        //     flags = flags or PendingIntent.FLAG_IMMUTABLE
-        // }
-
-        // API level 31 requires specifying either of
-        // PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_MUTABLE
-        var flags = PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
+        var flags = PendingIntent.FLAG_UPDATE_CURRENT
+        if (Build.VERSION.SDK_INT >= 23) {
+            flags = flags or PendingIntent.FLAG_IMMUTABLE
+        }
 
         return PendingIntent.getActivity(context, 0, intent, flags)
     }
